@@ -4,6 +4,7 @@ from pathlib import Path
 
 import altair as alt
 import lightgbm as lgb
+import pydeck as pdk
 import pandas as pd
 import streamlit as st
 
@@ -147,7 +148,25 @@ with tab2:
             pass
     if rows:
         reg = pd.DataFrame(rows)
-        st.map(reg, latitude='lat', longitude='lon')
+        when = st.radio('Show', ['Today', 'Tomorrow'], horizontal=True)
+        reg['cat'] = reg[when]
+        reg['aqi'] = reg[f'{when} AQI']
+        reg['color'] = reg['cat'].map(lambda c: [int(CAT_COLORS[c][i:i + 2], 16) for i in (1, 3, 5)] + [170])
+        reg['label'] = reg['City'] + ' ' + reg['aqi'].astype(str)
+        layers = [
+            pdk.Layer('ScatterplotLayer', reg, get_position='[lon, lat]', get_radius=7000,
+                      get_fill_color='color', pickable=True),
+            pdk.Layer('TextLayer', reg, get_position='[lon, lat]', get_text='label', get_size=15,
+                      get_color=[20, 20, 20, 255]),
+        ]
+        st.pydeck_chart(pdk.Deck(layers=layers, map_style='light',
+                                 initial_view_state=pdk.ViewState(latitude=28.55, longitude=77.3, zoom=8.6),
+                                 tooltip={'text': '{City}\nAQI {aqi} ({cat})'}))
+        st.markdown(' '.join(f"<span style='background:{CAT_COLORS[c]};color:#fff;padding:2px 8px;"
+                             f"border-radius:10px;font-size:12px'>{c}</span>"
+                             for c in ['Good', 'Satisfactory', 'Moderate', 'Poor', 'Very Poor', 'Severe']),
+                    unsafe_allow_html=True)
+        st.caption('One circle per city, coloured by forecast AQI category.')
         st.dataframe(reg.drop(columns=['lat', 'lon']), hide_index=True, width='stretch')
 
 with tab3:
