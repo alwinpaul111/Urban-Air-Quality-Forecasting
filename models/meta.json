@@ -1,0 +1,64 @@
+{
+  "features": [
+    "cams_pm2_5",
+    "cams_pm10",
+    "cams_nitrogen_dioxide",
+    "cams_ozone",
+    "cams_carbon_monoxide",
+    "cams_sulphur_dioxide",
+    "temperature_2m",
+    "relative_humidity_2m",
+    "dew_point_2m",
+    "surface_pressure",
+    "precipitation",
+    "wind_speed_10m",
+    "cloud_cover",
+    "wind_sin",
+    "wind_cos",
+    "hour",
+    "month",
+    "dayofweek",
+    "city_code"
+  ],
+  "city_codes": {
+    "Ghaziabad": 0,
+    "Noida": 1,
+    "Delhi": 2,
+    "Gurugram": 3,
+    "Faridabad": 4
+  },
+  "splits": {
+    "train_end": "2026-04-28 20:00:00+00:00",
+    "val_end": "2026-07-30 16:00:00+00:00"
+  },
+  "metrics": {
+    "pm25": {
+      "model": {
+        "mae": 20.38,
+        "rmse": 27.92,
+        "r2": 0.137
+      },
+      "raw_cams_baseline": {
+        "mae": 26.7,
+        "rmse": 38.79,
+        "r2": -0.665
+      },
+      "interval_80_coverage": 0.884,
+      "test_rows": 11005
+    },
+    "pm10": {
+      "model": {
+        "mae": 36.36,
+        "rmse": 49.84,
+        "r2": 0.383
+      },
+      "raw_cams_baseline": {
+        "mae": 96.0,
+        "rmse": 189.74,
+        "r2": -7.946
+      },
+      "interval_80_coverage": 0.792,
+      "test_rows": 10246
+    }
+  }
+}
