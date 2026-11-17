@@ -46,7 +46,7 @@ git push -u origin main
 1. Go to https://share.streamlit.io and sign in with GitHub.
 2. Click **Create app**, pick your repo, branch `main`, main file `app.py`.
 3. Optionally set a custom subdomain, then **Deploy**. The first build takes a few minutes.
-4. Copy the `https://<name>.streamlit.app` link into your report and presentation.
+4. Copy the `https://<name>.streamlit.app` link into your report and presentation
 
 No secrets are needed: the live app only calls Open-Meteo, which is keyless. The OpenAQ key is used only when collecting training data.
 
