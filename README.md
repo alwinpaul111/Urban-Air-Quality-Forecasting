@@ -1,6 +1,6 @@
 # Urban Air Quality Intelligence & Health Risk Prediction
 
-Streamlit dashboard for Delhi-NCR (Ghaziabad, Noida, Delhi, Gurugram, Faridabad) that turns a 4-day air-quality outlook into AQI categories and **health-risk levels for three sensitivity groups**, with prediction intervals and feature-level explanations. 
+Streamlit dashboard for Delhi-NCR (Ghaziabad, Noida, Delhi, Gurugram, Faridabad) that turns a 4-day air-quality outlook into AQI categories and **health-risk levels for three sensitivity groups**, with prediction intervals and feature-level explanations. SDG 3, 11, 13. CSET400C capstone, Bennett University.
 
 ## How it works
 - `src/data.py`: live weather + CAMS air-quality forecasts from Open-Meteo (no API key).
@@ -46,7 +46,7 @@ git push -u origin main
 1. Go to https://share.streamlit.io and sign in with GitHub.
 2. Click **Create app**, pick your repo, branch `main`, main file `app.py`.
 3. Optionally set a custom subdomain, then **Deploy**. The first build takes a few minutes.
-4. Copy the `https://<name>.streamlit.app` link into your report and presentation
+4. Copy the `https://<name>.streamlit.app` link into your report and presentation.
 
 No secrets are needed: the live app only calls Open-Meteo, which is keyless. The OpenAQ key is used only when collecting training data.
 
@@ -57,3 +57,11 @@ pip install pytest && python -m pytest tests
 
 ## Limits
 Station data is uneven, CAMS/ERA5 are coarse, and forecasts are weakest in extreme episodes. Health advice is general guidance, not medical advice.
+
+## Live ground readings (recommended)
+The dashboard's live AQI and forecast anchoring use OpenAQ ground stations when a key is available.
+On Streamlit Community Cloud: **Manage app -> Settings -> Secrets**, then add:
+```toml
+OPENAQ_API_KEY = "your_openaq_key"
+```
+Without it the app still works, but the top card says ESTIMATED and uses the ML model instead of station readings.

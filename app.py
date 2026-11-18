@@ -31,6 +31,7 @@ st.markdown("""<style>
 .dcard{border-radius:14px;padding:14px;background:#25282E}.dcard .d{font-weight:600}.dcard .a{font-size:32px;font-weight:800}
 .hbox{border-radius:16px;overflow:hidden;display:flex;background:#25282E}.hleft{padding:26px;min-width:240px;color:#fff;display:flex;flex-direction:column;justify-content:flex-end}
 .hright{padding:24px 28px;font-size:14px}.hright h4{margin:14px 0 6px}.hright li{margin-bottom:6px}
+.pcard,.dcard,.hbox,.hright,.wx{color:#E8EAED}.hright h4{color:#E8EAED}
 .chip{display:inline-block;color:#fff;padding:2px 9px;border-radius:10px;font-size:12px;margin-right:6px}
 </style>""", unsafe_allow_html=True)
 
