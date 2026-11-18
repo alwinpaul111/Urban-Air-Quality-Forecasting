@@ -1,6 +1,6 @@
 # Urban Air Quality Intelligence & Health Risk Prediction
 
-Streamlit dashboard for Delhi-NCR (Ghaziabad, Noida, Delhi, Gurugram, Faridabad) that turns a 4-day air-quality outlook into AQI categories and **health-risk levels for three sensitivity groups**, with prediction intervals and feature-level explanations. SDG 3, 11, 13. CSET400C capstone, Bennett University.
+Streamlit dashboard for Delhi-NCR (Ghaziabad, Noida, Delhi, Gurugram, Faridabad) that turns a 4-day air-quality outlook into AQI categories and **health-risk levels for three sensitivity groups**, with prediction intervals and feature-level explanations.
 
 ## How it works
 - `src/data.py`: live weather + CAMS air-quality forecasts from Open-Meteo (no API key).
